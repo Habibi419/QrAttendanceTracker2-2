@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow text-center">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title mb-0">
+                    <i class="fas fa-qrcode"></i> QR Code Attendance System
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <i class="fas fa-qrcode fa-5x text-primary mb-4"></i>
+                    <h2>Welcome to the QR Code Attendance System</h2>
+                    <p class="lead">A secure and efficient way to track attendance using QR codes</p>
+                    <hr>
+                    <div class="row mt-4">
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h4><i class="fas fa-user-shield"></i> Admin Access</h4>
+                                    <p>Generate QR codes for attendance sessions and view attendance records</p>
+                                    <a href="{{ url_for('admin_login') }}" class="btn btn-primary">
+                                        <i class="fas fa-sign-in-alt"></i> Admin Login
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h4><i class="fas fa-list"></i> View Attendance</h4>
+                                    <p>View all attendance records for all sessions</p>
+                                    <a href="{{ url_for('get_attendance') }}" class="btn btn-info">
+                                        <i class="fas fa-list"></i> View Attendance Records
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <p class="text-muted mb-0">
+                    <small>Secure, Quick, and Reliable Attendance Tracking</small>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

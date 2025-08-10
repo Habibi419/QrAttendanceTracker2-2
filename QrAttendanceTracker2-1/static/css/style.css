@@ -1,0 +1,55 @@
+/* QR Attendance System Custom Styles */
+
+/* QR Code Image */
+.qr-code-img {
+    max-width: 300px;
+    height: auto;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+/* Success page icon animation */
+.success-icon {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.7;
+    }
+    70% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.95);
+        opacity: 0.7;
+    }
+}
+
+/* Card styling */
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.card-header {
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .qr-code-img {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 576px) {
+    .qr-code-img {
+        max-width: 200px;
+    }
+}

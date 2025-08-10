@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow">
+    <div class="card-header bg-info text-white">
+        <h3 class="card-title mb-0">
+            <i class="fas fa-list"></i> Attendance Records
+        </h3>
+    </div>
+    <div class="card-body">
+        {% if not attendance_data %}
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> No attendance records found.
+            </div>
+        {% else %}
+            <div class="table-responsive">
+                <div class="mb-3">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search by name, ID, session...">
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Session</th>
+                            <th>Student ID</th>
+                            <th>Registration Number</th>
+                            <th>Name</th>
+                            <th>Timestamp</th>
+                            <th>IP Address</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendanceTable">
+                        {% for session, attendances in attendance_data.items() %}
+                            {% if attendances %}
+                                {% for attendance in attendances %}
+                                    <tr>
+                                        <td>{{ session.name }}</td>
+                                        <td>{{ attendance.student_id }}</td>
+                                        <td>{{ attendance.reg_number }}</td>
+                                        <td>{{ attendance.name }}</td>
+                                        <td>{{ attendance.timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                                        <td>{{ attendance.ip_address or 'Not recorded' }}</td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td>{{ session.name }}</td>
+                                    <td colspan="5" class="text-center text-muted">No attendances recorded</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+    <div class="card-footer">
+        <div class="d-flex justify-content-between align-items-center">
+            <a href="{{ url_for('generate_qr') }}" class="btn btn-primary">
+                <i class="fas fa-plus-circle"></i> Generate New QR Code
+            </a>
+            <button id="exportCsv" class="btn btn-secondary">
+                <i class="fas fa-file-download"></i> Export to CSV
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
